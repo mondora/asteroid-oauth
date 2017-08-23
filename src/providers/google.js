@@ -22,7 +22,7 @@ export function getOptions ({url, configCollection, scope, offlineAccess, forceP
         "client_id": getOauthClientId(configCollection),
         "redirect_uri": getOauthProtocol(protocol) + `//${host}/_oauth/google`,
         "state": getOauthState(credentialToken),
-        "scope": scope || "openid email",
+        "scope": scope || "openid email"
     };
 
     if(offlineAccess) query.access_type = 'offline';
