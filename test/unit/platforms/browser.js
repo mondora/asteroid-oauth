@@ -163,11 +163,11 @@ describe("`browser` platform class", function () {
         it("should call `_resolvePromise` if `credentialToken` in message is equal to `credentialToken` in instance", function () {
             const onMessageOptions = {
                 data: `{"credentialToken":"credentialToken","credentialSecret":"credentialSecret"}`,
-                origin: "host"
+                origin: "http://localhost:3000"
             };
             const instance = {
                 credentialToken: "credentialToken",
-                host: "host",
+                host: "localhost:3000",
                 _resolvePromise: sinon.spy(),
                 _rejectPromise: sinon.spy()
             };
@@ -183,11 +183,11 @@ describe("`browser` platform class", function () {
         it("should call `_rejectPromise` if `message` contain an error", function () {
             const onMessageOptions = {
                 data: `{"error": "Error message"}`,
-                origin: "host"
+                origin: "http://localhost:3000"
             };
             const instance = {
                 credentialToken: "credentialToken",
-                host: "host",
+                host: "localhost:3000",
                 _rejectPromise: sinon.spy(),
                 _resolvePromise: sinon.spy()
             };

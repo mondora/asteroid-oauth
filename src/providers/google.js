@@ -7,7 +7,7 @@ import getOauthProtocol from "../lib/get-oauth-protocol";
 
 export const name = "google";
 
-export function getOptions ({url, configCollection, scope}) {
+export function getOptions ({url, configCollection, scope, offlineAccess, forcePrompt}) {
     const credentialToken = generateCredentialToken();
     const {protocol, host} = url;
     const query = {
@@ -24,6 +24,10 @@ export function getOptions ({url, configCollection, scope}) {
         "state": getOauthState(credentialToken),
         "scope": scope || "openid email"
     };
+
+    if (offlineAccess) query.access_type = "offline";
+    if (forcePrompt) query.approval_prompt = "force";
+
     const loginUrl = parse("https://accounts.google.com/o/oauth2/auth")
         .set("query", query)
         .toString();

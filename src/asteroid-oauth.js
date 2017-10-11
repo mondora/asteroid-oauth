@@ -18,13 +18,15 @@ export function registerOauthProvider (provider) {
     providers[provider.name] = provider;
 }
 
-export function loginWith (providerName, scope) {
+export function loginWith (providerName, scope, offlineAccess, forcePrompt) {
     const options = providers[providerName].getOptions({
         url: this.oauth.url,
         // The mixin which implements collections must also implement the
         // getServiceConfig method
         configCollection: this.getServiceConfig(providerName),
-        scope
+        scope,
+        offlineAccess,
+        forcePrompt
     });
     return openOauthPopup(
         this.oauth.platform,

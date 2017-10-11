@@ -92,12 +92,14 @@ describe("`asteroid-oauth` mixin", function () {
                 },
                 getServiceConfig: sinon.spy()
             };
-            asteroidOauth.loginWith.call(instance, providerName, {scope: "scope"});
+            asteroidOauth.loginWith.call(instance, providerName, {scope: "scope"}, true, true);
             expect(providers.provider.getOptions).to.have.callCount(1);
             expect(providers.provider.getOptions).to.have.been.calledWith({
                 url: {},
                 configCollection: instance.getServiceConfig(),
-                scope: {scope: "scope"}
+                scope: {scope: "scope"},
+                offlineAccess: true,
+                forcePrompt: true
             });
         });
 
