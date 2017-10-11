@@ -25,8 +25,8 @@ export function getOptions ({url, configCollection, scope, offlineAccess, forceP
         "scope": scope || "openid email"
     };
 
-    if(offlineAccess) query.access_type = 'offline';
-    if(forcePrompt) query.approval_prompt = 'force';
+    if (offlineAccess) query.access_type = "offline";
+    if (forcePrompt) query.approval_prompt = "force";
 
     const loginUrl = parse("https://accounts.google.com/o/oauth2/auth")
         .set("query", query)
